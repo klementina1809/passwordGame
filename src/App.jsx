@@ -12,31 +12,62 @@ function App() {
 	}, [gameLevel]);
 
 	const rule1 = () => {
-		const result = value.length >= 4 ? true : false;
+		const result = value.length >= 6 ? true : false;
 		if (result && gameLevel === 1) setGameLevel(2);
 		return result;
 	};
 	const rule2 = () => {
-		const result = value.length >= 5 ? true : false;
-		if (result && gameLevel === 2) setGameLevel(3);
+		let result = false;
+		let count = 0;
+		for (let i = 0; i < value.length; i++) {
+			if (!isNaN(+value[i])) {
+				count++;
+			}
+		}
+		if (count >= 2) {
+			result = true;
+		}
+
+		if (result && gameLevel === 2) {
+			setGameLevel(3);
+		}
 		return result;
 	};
 	const rule3 = () => {
-		const result = value.length >= 9 ? true : false;
+		const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		const result = specialCharacters.test(value);
 		if (result && gameLevel === 3) setGameLevel(4);
 		return result;
 	};
+
 	const rule4 = () => {
-		const result = value.length > 11 ? true : false;
+		const uppercaseLetter = /[A-Z]/;
+		const result = uppercaseLetter.test(value);
 		if (result && gameLevel === 4) setGameLevel(5);
 		return result;
 	};
 
 	const rules = [
-		{ id: 1, description: "must be > 4", completed: rule1 },
-		{ id: 2, description: "must be > 5", completed: rule2 },
-		{ id: 3, description: "must be > 9", completed: rule3 },
-		{ id: 4, description: "must be < 11", completed: rule4 },
+		{
+			id: 1,
+			description: "Password must be longer than 6 characters",
+			completed: rule1,
+		},
+		{
+			id: 2,
+			description: "Password must include at least 2 numbers",
+			completed: rule2,
+		},
+		{
+			id: 3,
+			description: "Password must have at least one special character",
+			completed: rule3,
+		},
+		{
+			id: 4,
+			description: "Password must include at least one uppercase letter",
+			completed: rule4,
+		},
 	];
 
 	const handleChange = (e) => {
@@ -76,16 +107,14 @@ function App() {
 					onChange={(e) => handleChange(e)}
 				/>
 				{rules.slice(0, gameLevel).map((rule) => {
-		
-						return (
-							<Rule
-								key={rule.id}
-								id={rule.id}
-								isCompleted={rule.completed()}
-								description={rule.description}
-							/>
-						);
-					
+					return (
+						<Rule
+							key={rule.id}
+							id={rule.id}
+							isCompleted={rule.completed()}
+							description={rule.description}
+						/>
+					);
 				})}
 			</form>
 		</>
