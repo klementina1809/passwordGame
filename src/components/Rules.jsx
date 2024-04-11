@@ -36,6 +36,11 @@ function Rules({ value, gameLevel, handleLevel }) {
 		setCountry(countries[index].country);
 	};
 
+	const getDate = () => {
+		let date = new Date();
+		return date;
+	};
+
 	const rule1 = () => {
 		const result = value.length >= 6 ? true : false;
 		if (result && gameLevel === 1) handleLevel(2);
@@ -82,7 +87,7 @@ function Rules({ value, gameLevel, handleLevel }) {
 				count += +value[i];
 			}
 		}
-		if (count >= 24) {
+		if (count == 24) {
 			result = true;
 		}
 		if (result && gameLevel === 5) handleLevel(6);
@@ -124,7 +129,19 @@ function Rules({ value, gameLevel, handleLevel }) {
 				console.log(count);
 			}
 		}
+		if (count < 2 && gameLevel === 8) {
+			handleLevel(9);
+		}
 		return count < 2;
+	};
+
+	const rule9 = () => {
+		const date = getDate();
+		const hours = date.getHours().toString();
+		console.log(hours);
+		const result = value.includes(hours);
+		if (result && gameLevel === 9) handleLevel(10);
+		return result;
 	};
 
 	const rules = [
@@ -152,8 +169,7 @@ function Rules({ value, gameLevel, handleLevel }) {
 		},
 		{
 			id: 5,
-			description:
-				"La somma di tutti i numeri deve essere maggiore di 24",
+			description: "La somma di tutti i numeri deve essere uguale a 24.",
 			completed: rule5,
 		},
 		{
@@ -170,6 +186,11 @@ function Rules({ value, gameLevel, handleLevel }) {
 			id: 8,
 			description: "La password non può contenere più di una lettera 'o'",
 			completed: rule8,
+		},
+		{
+			id: 9,
+			description: "La password deve contenere il numero di ore attuali",
+			completed: rule9,
 		},
 	];
 
