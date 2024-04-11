@@ -13,7 +13,22 @@ function Rules({ value, gameLevel, handleLevel }) {
 		{ country: "Ucraina", capital: "Kiev" },
 		{ country: "Svizzera", capital: "Berna" },
 		{ country: "Austria", capital: "Vienna" },
-		{ country: "Svezia", capital: "Stoccolma" },
+		{ country: "Regno Unito", capital: "Londra" },
+	];
+
+	const italianMonths = [
+		"gennaio",
+		"febbraio",
+		"marzo",
+		"aprile",
+		"maggio",
+		"giugno",
+		"luglio",
+		"agosto",
+		"settembre",
+		"ottobre",
+		"novembre",
+		"dicembre",
 	];
 
 	const generateCountry = () => {
@@ -26,6 +41,7 @@ function Rules({ value, gameLevel, handleLevel }) {
 		if (result && gameLevel === 1) handleLevel(2);
 		return result;
 	};
+
 	const rule2 = () => {
 		let result = false;
 		let count = 0;
@@ -43,6 +59,7 @@ function Rules({ value, gameLevel, handleLevel }) {
 		}
 		return result;
 	};
+
 	const rule3 = () => {
 		const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 		const result = specialCharacters.test(value);
@@ -56,6 +73,7 @@ function Rules({ value, gameLevel, handleLevel }) {
 		if (result && gameLevel === 4) handleLevel(5);
 		return result;
 	};
+
 	const rule5 = () => {
 		let result = false;
 		let count = 0;
@@ -71,11 +89,11 @@ function Rules({ value, gameLevel, handleLevel }) {
 
 		return result;
 	};
+
 	const rule6 = () => {
 		if (!country) {
 			generateCountry();
 		}
-
 		let city = "";
 		for (let i of countries) {
 			if (i.country === country) {
@@ -83,10 +101,30 @@ function Rules({ value, gameLevel, handleLevel }) {
 				break;
 			}
 		}
-
 		const result = value.includes(city);
 		if (result && gameLevel === 6) handleLevel(7);
 		return result;
+	};
+
+	const rule7 = () => {
+		const result = italianMonths.some((m) =>
+			value.toLowerCase().includes(m)
+		);
+		if (result && gameLevel === 7) {
+			handleLevel(8);
+		}
+		return result;
+	};
+
+	const rule8 = () => {
+		let count = 0;
+		for (let char of value) {
+			if (char.toLowerCase() === "o") {
+				count++;
+				console.log(count);
+			}
+		}
+		return count < 2;
 	};
 
 	const rules = [
@@ -122,6 +160,16 @@ function Rules({ value, gameLevel, handleLevel }) {
 			id: 6,
 			description: `La password deve includere la capitale di ${country} `,
 			completed: rule6,
+		},
+		{
+			id: 7,
+			description: "La password deve includere il nome del mese",
+			completed: rule7,
+		},
+		{
+			id: 8,
+			description: "La password non può contenere più di una lettera 'o'",
+			completed: rule8,
 		},
 	];
 
