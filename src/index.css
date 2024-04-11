@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  background-color: #fffae9;
-  font-size: 22px;
-}

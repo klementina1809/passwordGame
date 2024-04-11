@@ -1,3 +1,14 @@
+* {
+  background-color: #fffae9;
+  font-size: 22px;
+}
+
+@media (max-width: 760px) {
+  * {
+    font-size: 16px;
+  } 
+}
+
 #root {
 	max-width: 1280px;
 	margin: 0 auto;
@@ -5,9 +16,9 @@
 	text-align: center;
 }
 form {
-margin: auto;
-text-align: center;
-align-items: center;
+	margin: auto;
+	text-align: center;
+	align-items: center;
 }
 
 .form {
@@ -23,5 +34,5 @@ align-items: center;
 	min-width: 120px !important;
 }
 .form .input {
-	flex:1;
+	flex: 1;
 }
