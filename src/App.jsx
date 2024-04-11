@@ -24,36 +24,39 @@ function App() {
 	const doSubmit = () => {
 		//call server
 		setValue("");
+		setGameLevel(0);
 		setMessage(
-			"Questo password è già in uso, purtroppo. Si prega di riprovare."
+			"Questa password è già in uso, purtroppo. Si prega di riprovare."
 		);
 		console.log("Submitted");
 	};
 
 	return (
 		<>
-			<h1 className="text-3xl font-bold mb-4 stroke-stone-950">
+			<h1 className="text-3xl font-bold mb-16 text-stone-700">
 				Gioco della Password
 			</h1>
 
 			<form onSubmit={(e) => e.preventDefault(doSubmit())}>
-				<button
-					// disabled
-					type="submit"
-					// className={`p-2 mb-2 rounded-md border-2 ${
-					// 	validate()
-					// 		? "bg-red-200 text-red-300 cursor-not-allowed"
-					// 		: "bg-red-400 text-white border-red-400 hover:bg-red-500 focus:outline-none"
-					// }`}
-				>
-					Submit
-				</button>
+				<div className="form">
+					<Input
+						name={"password"}
+						value={value}
+						onChange={(e) => handleChange(e)}
+					/>
+					<button
+						disabled={gameLevel !== 11}
+						type="submit"
+						className={`p-2 rounded-md border-2 font-semibold ${
+							gameLevel !== 11
+								? "bg-red-200 text-white border-white cursor-not-allowed"
+								: "bg-red-400 text-white border-red-400 hover:bg-red-500 focus:outline-none"
+						}`}
+					>
+						Submit
+					</button>
+				</div>
 				{message && <p>{message}</p>}
-				<Input
-					name={"password"}
-					value={value}
-					onChange={(e) => handleChange(e)}
-				/>
 				<Rules
 					value={value}
 					gameLevel={gameLevel}

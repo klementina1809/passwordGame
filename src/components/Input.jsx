@@ -1,16 +1,16 @@
 import React from "react";
 import Rule from "./Rule";
 
-function Input({ value, onChange}) {
-
+function Input({ value, onChange }) {
 	return (
 		<div className="form">
-			<label htmlFor={value}>Inserisci il password</label>
+			<label htmlFor={value}></label>
 			<input
+				placeholder="Inserisci il password"
 				type="text"
 				onChange={onChange}
 				value={value}
-				className="border border-stone-600 p-2 rounded-md focus:outline-none focus:border-stone-950 bg-orange-100 w-3/6"
+				className="input border-stone-400 p-2 mt-2 mb-2 mr-1 border-2 rounded-md focus:outline-none focus:border-stone-600 bg-white w-3/6"
 			/>
 		</div>
 	);

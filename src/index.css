@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 * {
-  background-color: rgb(255, 229, 182);
+  background-color: #fffae9;
+  font-size: 22px;
 }

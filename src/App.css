@@ -4,10 +4,24 @@
 	padding: 2rem;
 	text-align: center;
 }
+form {
+margin: auto;
+text-align: center;
+align-items: center;
+}
 
 .form {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center;
 	align-items: center;
+	width: 600px;
+	gap: 8px;
+	margin: auto;
 }
-
+.form button {
+	min-width: 120px !important;
+}
+.form .input {
+	flex:1;
+}
