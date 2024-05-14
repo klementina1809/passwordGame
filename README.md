@@ -1,8 +1,27 @@
-# React + Vite
+# Password Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### About:
+This project offers an endless password game where users input passwords following gradually appearing validation rules. With a total of 10 distinct password requirements, players must adapt their inputs to meet each new criterion as it arises.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Demo:
+<a href="https://klementina1809.github.io/passwordGame/">
+<img src="public/preview.png" alt="preview" />
+</a>
+
+### Technologies Used:
+![Static Badge](https://img.shields.io/badge/React-ffffff?style=social&logo=React)
+![Static Badge](https://img.shields.io/badge/HTML5-ffffff?style=social&logo=HTML5)
+![Static Badge](https://img.shields.io/badge/CSS3-ffffff?style=social&logo=CSS3)
+![Static Badge](https://img.shields.io/badge/JavaScript-ffffff?style=social&logo=JavaScript)
+![Static Badge](https://img.shields.io/badge/TailwindCSS-ffffff?style=social&logo=TailwindCSS)
+
+### Packages Used:
+- [Classnames](https://www.npmjs.com/package/classnames)
+
+
+### Other Links:
+- [Inspired by](https://neal.fun/password-game/)
+
+
+
